@@ -1,0 +1,10 @@
+applications:
+- name: bootcamp-store-mk
+  buildpacks:
+  - https://github.com/cloudfoundry/dotnet-core-buildpack#v2.3.11
+  random-route: true
+  memory: 256M
+  env:
+   ASPNETCORE_ENVIRONMENT: development
+  services:
+  - myDiscoveryService
