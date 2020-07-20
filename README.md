@@ -4,11 +4,11 @@ This repository is a workshop created to demonstrate dotnet core applications th
 
 ## Workshop Contents
 
-- [Prerequisites](Exercises/Exercise%20#0%20Prerequisites)
-- [Database Connectors](Exercises/Exercise%20#1%20Database%20Connectors)
-- [Configuration And Logging](Exercises/Exercise%20#2%20Configuration%20And%20Logging)
-- [Discovery](Exercises/Exercise%20#3%20Discovery)
-- [Management](Exercises/Exercise%20#4%20Management)
-- [Serilog](Exercises/Exercise%20#5%20Serilog)
-- [Distributed Tracing](Exercises/Exercise%20#6%20Distributed%20Tracing)
-- [Security](Exercises/Exercise%20#7%20Security)
+- [Prerequisites](Exercises/Exercise%20%230%20Prerequisites.md)
+- [Database Connectors](Exercises/Exercise%20%231%20Database%20Connectors.md)
+- [Configuration And Logging](Exercises/Exercise%20%232%20Configuration%20And%20Logging.md)
+- [Discovery](Exercises/Exercise%20%233%20Discovery.md)
+- [Management](Exercises/Exercise%20%234%20Management.md)
+- [Serilog](Exercises/Exercise%20%235%20Serilog.md)
+- [Distributed Tracing](Exercises/Exercise%20%236%20Distributed%20Tracing.md)
+- [Security](Exercises/Exercise%20%237%20Security.md)
