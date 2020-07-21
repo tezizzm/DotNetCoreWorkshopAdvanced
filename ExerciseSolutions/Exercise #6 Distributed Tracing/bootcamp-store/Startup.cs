@@ -30,10 +30,10 @@ namespace bootcamp_store
             {
                 client.Timeout = TimeSpan.FromMilliseconds(1000);
             });
+            
             services.AddDistributedTracing(Configuration);
             services.AddZipkinExporter(Configuration);
             services.AddControllersWithViews();
-            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,7 +53,7 @@ namespace bootcamp_store
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            
             app.UseAuthorization();
 
             app.UseTracingExporter();

@@ -122,3 +122,7 @@ Before we switch to Apps Manager and see all the wonderful benefits of actuators
         services.AddControllersWithViews();
     }
     ```
+
+5. Run the cf push command to build, stage and run your application on PCF.  Ensure you are in the same directory as your manifest file and type `cf push`.
+
+6. Once the command has completed, navigate to the url to once again see the home page with products listed and then explore some of the Apps Manager integrations with Steeltoe.

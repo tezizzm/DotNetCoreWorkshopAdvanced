@@ -1,5 +1,5 @@
 applications:
-- name: zipkin-mk
+- name: zipkin-{initials}
   path: .\zipkin-server-2.9.4-exec.jar
   buildpacks:
   - java_buildpack_offline

@@ -1,4 +1,4 @@
-﻿@model IList<Product>
+﻿@model IEnumerable<Product>
 
 @{
     ViewData["Title"] = "Home Page";
@@ -13,26 +13,33 @@
 <div class="container">
     <h2>Products</h2>
     <div class="row">
-        <div class="col-xs-12 table-responsive">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Category</th>
-                        <th>Inventory</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach(var product in Model)
-                    {
-                        <tr>
-                            <td>@product.Name</td>
-                            <td>@product.Category</td>
-                            <td>@product.Inventory</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
+        <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <div class="col-xs-12 table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Name)</th>
+                <th>@Html.DisplayNameFor(model => model.Category)</th>
+                <th>@Html.DisplayNameFor(model => model.Inventory)</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => product.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => product.Category)</td>
+                    <td>@Html.DisplayFor(modelItem => product.Inventory)</td>
+                    <td>
+                        @Html.ActionLink("Delete", "Delete", new {product.Id})
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
     </div>
 </div>

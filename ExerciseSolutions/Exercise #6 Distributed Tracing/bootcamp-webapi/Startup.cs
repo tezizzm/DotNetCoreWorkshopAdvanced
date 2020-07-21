@@ -18,6 +18,8 @@ using Steeltoe.Extensions.Configuration.ConfigServer;
 using NJsonSchema;
 using NSwag.AspNetCore;
 using Steeltoe.Management.Endpoint.Info;
+using Steeltoe.Management.Exporter.Tracing;
+using Steeltoe.Management.Tracing;
 
 namespace bootcamp_webapi
 {
@@ -38,6 +40,7 @@ namespace bootcamp_webapi
             var apiSettings = Configuration
                 .GetSection("api")
                 .Get<ApiSettings>();
+
             services.AddSwaggerDocument(config => 
             {
                 config.PostProcess = document =>
@@ -49,10 +52,11 @@ namespace bootcamp_webapi
                     document.Schemes.Add(NSwag.OpenApiSchema.Https);
                 };
             });
-
+            
             services.AddSingleton<IInfoContributor, ProductInStockInfoContributor>();
-
             services.AddControllers();
+            services.AddDistributedTracing(Configuration);
+            services.AddZipkinExporter(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,6 +73,7 @@ namespace bootcamp_webapi
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseTracingExporter();
 
             app.UseAuthorization();
 
