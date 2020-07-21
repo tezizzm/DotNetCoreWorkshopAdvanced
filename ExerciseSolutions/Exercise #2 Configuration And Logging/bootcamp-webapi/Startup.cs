@@ -37,6 +37,7 @@ namespace bootcamp_webapi
             var apiSettings = Configuration
                 .GetSection("api")
                 .Get<ApiSettings>();
+
             services.AddSwaggerDocument(config => 
             {
                 config.PostProcess = document =>

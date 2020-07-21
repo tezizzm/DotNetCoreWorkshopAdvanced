@@ -143,16 +143,11 @@ In this exercise we explore how Configuration Server pulls configuration from a 
     cf create-service p-config-server standard myConfigServer -c .\config.json
     ```
 
-8. You are ready to now “push” your application.  Edit the manifest.yml file to match the snippet below and remember to replace the initials placeholders.  **Note due to formatting issues simply copying the below manifest file may produce errors due to the nature of yaml formatting.  Use the CloudFoundry extension recommend in exercise 1 to assist in the correct formatting**
+8. You are ready to now “push” your application.  Edit the manifest.yml file to add a services section (under the env section) that will automatically bind our application to the config server instance we just created.
 
     ```yml
-    applications:
-   - name: bootcamp-api-{initials}
-     random-route: true
-     buildpacks:
-     - https://github.com/cloudfoundry/dotnet-core-buildpack$v2.3.11
-     instances: 1
-     memory: 256M
+    ...
+    ...
      env:
        ASPNETCORE_ENVIRONMENT: development
      services:

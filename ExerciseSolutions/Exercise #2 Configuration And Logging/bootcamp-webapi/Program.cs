@@ -10,7 +10,6 @@ using Steeltoe.Extensions.Configuration.CloudFoundry;
 using Microsoft.Extensions.DependencyInjection;
 using Steeltoe.Extensions.Configuration.ConfigServer;
 
-
 namespace bootcamp_webapi
 {
     public class Program
@@ -29,7 +28,7 @@ namespace bootcamp_webapi
                     webBuilder.AddConfigServer(GetLoggerFactory());
                     webBuilder.UseStartup<Startup>();
                 });
-
+                
         public static ILoggerFactory GetLoggerFactory()
         {
             IServiceCollection serviceCollection = new ServiceCollection();

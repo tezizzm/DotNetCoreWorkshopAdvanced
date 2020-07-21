@@ -8,4 +8,4 @@ applications:
   env:
     ASPNETCORE_ENVIRONMENT: development
   services:
-    - myConfigServer
+  - myConfigServer
