@@ -125,7 +125,7 @@ We now change focus to a front end application that discovers our products API m
     {
         public class HomeController : Controller
         {
-            private const string Initials = "mk";
+            private const string Initials = ;
             private static readonly string ApiBaseUrl = $"https://bootcamp-api-{Initials}/api/products";
             private readonly DiscoveryHttpClientHandler _handler;
 

@@ -82,7 +82,7 @@ In this exercise we explore how Configuration Server pulls configuration from a 
             .GetSection("api")
             .Get<ApiSettings>();
 
-        services.AddSwaggerDocument(config => 
+        services.AddSwaggerDocument(config =>
         {
             config.PostProcess = document =>
             {

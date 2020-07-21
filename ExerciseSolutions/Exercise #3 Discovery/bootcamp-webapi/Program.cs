@@ -30,7 +30,6 @@ namespace bootcamp_webapi
                     webBuilder.AddServiceDiscovery();
                     webBuilder.UseStartup<Startup>();
                 });
-
         public static ILoggerFactory GetLoggerFactory()
         {
             IServiceCollection serviceCollection = new ServiceCollection();
