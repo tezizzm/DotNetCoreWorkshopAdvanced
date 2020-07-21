@@ -26,8 +26,13 @@ namespace bootcamp_webapi
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .ConfigureLogging((builderContext, loggingBuilder) =>
+                {
+                    loggingBuilder.AddSerilogDynamicConsole();
+                })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    webBuilder.AddCloudFoundryActuators();
                     webBuilder.AddConfigServer(GetLoggerFactory());
                     webBuilder.AddServiceDiscovery();
                     webBuilder.UseStartup<Startup>();

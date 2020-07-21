@@ -86,7 +86,7 @@ In this exercise we'll add our Serilog integration to our bootcamp-webapi backen
 
 Before we switch to Apps Manager and see all the wonderful benefits of actuators, let's customize things a little. One very useful actuator is the /Info endpoint.
 
-1. Create a new C# class in the app project, named `ProductInfoContributor.cs`. It can be located in the root of the project with the Project.cs and Startup.cs files.  The class should have the following definition:
+1. Create a new C# class in the app project, named `ProductInStockInfoContributor.cs`. It can be located in the root of the project with the Project.cs and Startup.cs files.  The class should have the following definition:
 
     ```cs
     using System.Linq;
