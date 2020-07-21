@@ -22,7 +22,7 @@ namespace bootcamp_store
                 Status = HealthStatus.UP,
                 Description = "Current Status of Itunes API Integration!"
             };
-            
+
             var response = string.Empty;
             try
             {

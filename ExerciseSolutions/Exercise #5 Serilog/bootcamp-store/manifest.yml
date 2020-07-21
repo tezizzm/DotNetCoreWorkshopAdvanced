@@ -5,6 +5,6 @@ applications:
   random-route: true
   memory: 256M
   env:
-   ASPNETCORE_ENVIRONMENT: development
+    ASPNETCORE_ENVIRONMENT: development
   services:
   - myDiscoveryService

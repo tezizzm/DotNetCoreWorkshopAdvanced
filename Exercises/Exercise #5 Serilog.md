@@ -28,7 +28,7 @@ In this exercise we'll add our Serilog integration to our bootcamp-webapi backen
         using Steeltoe.Management.CloudFoundry;
         ```
 
-   2. In the CreateHostBuilder method add the following line before the `webBuilder.AddConfigServer(GetLoggerFactory());` call to configure the Cloud Foundry Actuators.
+   2. In the CreateHostBuilder method make the below `ConfigureLogging` ***before*** the call to `ConfigureWebHostDefaults` to configure Serilog logging.  The AddCloudFoundryActuators and AddConfigServer calls automatically add Dynamic logging.  If you don't put the SerilogDynamicConsole logging before these calls you will see an error.  Also add the call `webBuilder.AddCloudFoundryActuators();` to add the Cloud Foundry Actuators as we did in our Store Front UI.
 
         ```c#
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -118,7 +118,7 @@ Before we switch to Apps Manager and see all the wonderful benefits of actuators
 
 2. Open the `Startup.cs` file, by double clicking.
 
-3. Add a reference to the HealthChecks Steeltoe package.
+3. Add a reference to the Info Steeltoe package.
 
     ```cs
     using Steeltoe.Management.Endpoint.Info;

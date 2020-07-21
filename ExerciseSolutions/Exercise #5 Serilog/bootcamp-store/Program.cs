@@ -23,7 +23,7 @@ namespace bootcamp_store
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.AddServiceDiscovery();
+                    webBuilder.AddServiceDiscovery();  
                     webBuilder.AddCloudFoundryActuators();
                     webBuilder.AddCloudFoundry();
                     webBuilder.UseStartup<Startup>();

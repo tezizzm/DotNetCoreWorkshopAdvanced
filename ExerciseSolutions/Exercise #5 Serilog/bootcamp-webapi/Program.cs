@@ -13,7 +13,6 @@ using Steeltoe.Discovery.Client;
 using Steeltoe.Extensions.Logging.SerilogDynamicLogger;
 using Steeltoe.Management.CloudFoundry;
 
-
 namespace bootcamp_webapi
 {
     public class Program
@@ -27,19 +26,12 @@ namespace bootcamp_webapi
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureLogging((builderContext, loggingBuilder) =>
-                {
-                    loggingBuilder.AddSerilogDynamicConsole();
-                })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.AddCloudFoundryActuators();
                     webBuilder.AddConfigServer(GetLoggerFactory());
                     webBuilder.AddServiceDiscovery();
                     webBuilder.UseStartup<Startup>();
-                    
                 });
-
         public static ILoggerFactory GetLoggerFactory()
         {
             IServiceCollection serviceCollection = new ServiceCollection();
