@@ -10,7 +10,7 @@ When this exercise is complete we will have created our backend microservice, bo
 
 ## Introduction
 
-In this exercise we create a Web API application that will serve as the backend microservice for the remaining exercises in this workshop.  We will bind a persistent store to our microservice and observe the Steeltoe connectors discover and connect to the persistent store.  **Note we assume there is an instance of MySql available to bind to your application.  If not the code will detect this and connect and utilize an in memory data store.**
+In this exercise we create a Web API application that will serve as the backend microservice for the remaining exercises in this workshop.  We will bind a in memory persistent store to our microservice and observe the Steeltoe connectors discover and connect to the persistent store.
 
 1. Create a directory for our new API with the following command:  `mkdir bootcamp-webapi`
 
@@ -33,7 +33,7 @@ In this exercise we create a Web API application that will serve as the backend 
     dotnet add package Microsoft.EntityFrameworkCore.Design --version 3.1.4
     ```
 
-5. In the Program.cs class add the following using statement and edit the CreateHostBuilder method to add the call `webBuilder.AddCloudFoundry();` which adds  Cloud Foundry environment variables.  The using statement allows us to use types of a given namespace without fully qualifying a given type [see](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/using-directive) for information on the c# using statement.
+5. In the Program.cs class add the following using statement and edit the CreateHostBuilder method to add the call `webBuilder.AddCloudFoundry();` which adds Cloud Foundry environment variables.  The using statement allows us to use types of a given namespace without fully qualifying a given type [see](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/using-directive) for information on the c# using statement.
 
     ```c#
     using Steeltoe.Extensions.Configuration.CloudFoundry;
@@ -187,7 +187,7 @@ In this exercise we create a Web API application that will serve as the backend 
 
 13. We must now create the actual migrations themselves.  To do this we run the command `dotnet ef migrations add InitialCreation` which will create a folder named Migrations in our solution.  This folder will hold the initial migration files that create our database based on the definition of our Product context and entity class.  For further reading on creating migrations [see](https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/#create-a-migration).  *Note if you get this error message `An error occurred while accessing the Microsoft.Extensions.Hosting services. Continuing without the application service provider. Error: Could not parse the JSON file.` please ignore it, this may be a EF CLI bug and I am currently investigating.  This CLI error message will not affect your generated migrations in any way.*
 
-14. A controller is used to define and group a set of actions which are methods that handle incoming requests.  For an in depth view of ASP.NET Core MVC [see](https://docs.microsoft.com/en-us/aspnet/core/mvc/overview?view=aspnetcore-3.1) and for a Controller specific discussion [see](https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/actions?view=aspnetcore-3.1).  In the controllers folder create a new class and name it `ProductsController.cs` and then paste the following contents into the file:
+14. A controller is used to define and group a set of actions which are methods that handle incoming requests.  For an in depth view of ASP.NET Core MVC [see](https://docs.microsoft.com/en-us/aspnet/core/mvc/overview?view=aspnetcore-3.1) and for a Controller specific discussion [see](https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/actions?view=aspnetcore-3.1).  In the Controllers folder create a new class and name it `ProductsController.cs` and then paste the following contents into the file:
 
     ```c#
     using System;
@@ -283,6 +283,4 @@ In this exercise we create a Web API application that will serve as the backend 
 
 17. Run the cf push command to build, stage and run your application on PCF.  Ensure you are in the same directory as your manifest file and type `cf push`.
 
-    ***The operation to create the MySql instance can be timely.  If you attempt to push the application while the service is still being created, you will see errors indicating that an operation on the service is pending.***
-
-18. Once the `cf push` command has completed navigate to the given application url at which point you will see a 401 Not Found Status. This is expected since we haven't configured a default route and will be updated in the next lab.  If you navigate to the api/products path you should see a json array of products that are pulled from the backend store.
+18. Once the `cf push` command has completed navigate to the given application url at which point you will see a 401 Not Found Status. This is expected since we haven't configured a default route and will be updated in the next lab.  If you navigate to the `api/products` path you should see a json array of products that are pulled from the backend store.
