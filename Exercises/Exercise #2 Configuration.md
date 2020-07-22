@@ -140,7 +140,7 @@ In this exercise we explore how Configuration Server pulls configuration from a 
 7. Run the following command to create an instance of Spring Cloud Config Server with settings from config.json **note: service instance name and plan may be different depending on platform/operator configuration**
 
     ```bat
-    cf create-service p-config-server standard myConfigServer -c .\config.json
+    cf create-service p-config-server standard myConfigServer-mk -c .\config.json
     ```
 
 8. You are ready to now “push” your application.  Edit the manifest.yml file to add a services section (under the env section) that will automatically bind our application to the config server instance we just created.
@@ -151,7 +151,7 @@ In this exercise we explore how Configuration Server pulls configuration from a 
      env:
        ASPNETCORE_ENVIRONMENT: development
      services:
-     - myConfigServer
+     - myConfigServer-mk
     ```
 
 9. Run the cf push command to build, stage and run your application on PCF.  Ensure you are in the same directory as your manifest file and type `cf push`.
