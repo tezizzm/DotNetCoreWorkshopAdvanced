@@ -6,7 +6,7 @@ This repository is a workshop created to demonstrate dotnet core applications th
 
 - [Prerequisites](Exercises/Exercise%20%230%20Prerequisites.md)
 - [Database Connectors](Exercises/Exercise%20%231%20Database%20Connectors.md)
-- [Configuration And Logging](Exercises/Exercise%20%232%20Configuration%20And%20Logging.md)
+- [Configuration](Exercises/Exercise%20%232%20Configuration.md)
 - [Discovery](Exercises/Exercise%20%233%20Discovery.md)
 - [Management](Exercises/Exercise%20%234%20Management.md)
 - [Serilog](Exercises/Exercise%20%235%20Serilog.md)
