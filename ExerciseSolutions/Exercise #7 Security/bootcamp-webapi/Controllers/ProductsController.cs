@@ -15,7 +15,7 @@ namespace bootcamp_webapi.Controllers
         {
             _context = context;
         }
-        // GET api/products
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> Get()
         {

@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+
 namespace bootcamp_webapi
 {
     public class ProductFactory : IDesignTimeDbContextFactory<ProductContext>
@@ -8,6 +9,7 @@ namespace bootcamp_webapi
         {
             var optionsBuilder = new DbContextOptionsBuilder<ProductContext>();
             optionsBuilder.UseSqlite("DataSource=:memory:");
+
             return new ProductContext(optionsBuilder.Options);
         }
     }

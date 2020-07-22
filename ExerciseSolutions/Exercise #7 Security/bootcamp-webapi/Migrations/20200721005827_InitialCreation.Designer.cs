@@ -8,7 +8,7 @@ using bootcamp_webapi;
 namespace bootcamp_webapi.Migrations
 {
     [DbContext(typeof(ProductContext))]
-    [Migration("20200716072928_InitialCreation")]
+    [Migration("20200721005827_InitialCreation")]
     partial class InitialCreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

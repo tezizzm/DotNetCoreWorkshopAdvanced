@@ -7,10 +7,10 @@ using bootcamp_store.Models;
 using Steeltoe.Common.Discovery;
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Steeltoe.Common.Http;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 
 namespace bootcamp_store.Controllers
 {
@@ -89,21 +89,21 @@ namespace bootcamp_store.Controllers
         [HttpPost]
         public async Task<IActionResult> LogOff()
         {
-           await HttpContext.SignOutAsync();
-           return RedirectToAction(nameof(Index), "Home");
+            await HttpContext.SignOutAsync();
+            return RedirectToAction(nameof(Index), "Home");
         }
 
         [HttpGet]
         [Authorize]
         public IActionResult Login()
         {
-           return RedirectToAction(nameof(Index), "Home");
+            return RedirectToAction(nameof(Index), "Home");
         }
 
         public IActionResult AccessDenied()
         {
-           ViewData["Message"] = "Insufficient permissions.";
-           return View();
+            ViewData["Message"] = "Insufficient permissions.";
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

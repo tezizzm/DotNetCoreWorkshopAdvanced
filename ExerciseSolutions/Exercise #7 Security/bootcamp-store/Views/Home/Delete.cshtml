@@ -1,4 +1,4 @@
-﻿@model bootcamp_store.Product
+@model bootcamp_store.Product
 
 @{
     ViewData["Title"] = "Delete";
@@ -36,7 +36,7 @@
             @Html.DisplayFor(model => model.Inventory)
         </dd>
     </dl>
-    
+
     <form asp-action="Delete">
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>

@@ -12,7 +12,9 @@ At the conclusion of this exercise we will have created an instance of the SSO s
 
 In this exercise we will explore the process of integrating our applications with the SSO tile and enabling a Single Sign On experience.  ***Note: With this exercise we have attempted to create an experience that will work across all environments.  Note, because every environment is configured differently (users, credentials, IDP, etc) these instructions may not align with your specific environment configuration.  Rest assured that the instructor will provide guidance where there is divergence from these instructions and your specific environment.***
 
-1. We will first make several enhancements to our application to support and show off SSO based features.  
+1. Before we begin please be sure an SSO service plan has been created by your platform team and is available in your service marketplace.  It is assumed this service is tied to an internal UAA store but not necessarily required.
+
+2. We will make several enhancements to our Web Store UI application to support and show off SSO based features.  
 
    1. Navigate to the Index.cshtml and edit it to the below definition.  Notice we have created authentication based logic that changes the view based on if the user is currently authenticated.
 
@@ -91,7 +93,7 @@ In this exercise we will explore the process of integrating our applications wit
         </div>
         ```
 
-   2. Create a view call AccessDenied.cshtml with the following definition.  This view will be displaying when a user is authenticated but not authorized to view a resource.
+   2. Create a view in the Views > Home folder called `AccessDenied.cshtml` with the following definition.  This view will be displaying when a user is authenticated but not authorized to view a resource.
 
         ```cs
         @{
@@ -101,7 +103,7 @@ In this exercise we will explore the process of integrating our applications wit
         <h3>The authenticated user @User.Identity.Name does not have access to this resource</h3>
         ```
 
-   3. Navigate to the Views > Shared folder and create a new file named _LoginPartial.cshtml with the following definition.  This partial view encapsulates our login markup and allows it to be used in several different places across our application.
+   3. Navigate to the Views > Shared folder and create a new file named `_LoginPartial.cshtml` with the following definition.  This partial view encapsulates our login markup and allows it to be used in several different places across our application.
 
         ```cs
         @if (User.Identity.IsAuthenticated)
@@ -143,13 +145,13 @@ In this exercise we will explore the process of integrating our applications wit
         @await Html.PartialAsync("_LoginPartial")
         ```
 
-2. Return back to your `bootcamp-store` project root and find the project file.  We will add the following nuget package:
+3. Return back to your `bootcamp-store` project root and find the project file.  We will add the following nuget package:
 
     ```powershell
     dotnet add package Steeltoe.Security.Authentication.CloudFoundryCore --version 2.4.4
     ```
 
-3. Navigate to the `Startup.cs` class and make the following edits:
+4. Navigate to the `Startup.cs` class and make the following edits:
 
    1. Set the following using statements:
 
@@ -160,7 +162,7 @@ In this exercise we will explore the process of integrating our applications wit
         using Steeltoe.Security.Authentication.CloudFoundry;
         ```
 
-   2. In the ConfigureServices method add the following snippet to add the authorization and authentication services to the service container
+   2. In the ConfigureServices method add the following snippet to add the authorization and authentication services to the service container.  Note the scope `admin.write`, any authenticated user will need this scope to perform any action that is governed by the declared policy.
 
         ```c#
         services.AddAuthentication((options) =>
@@ -244,14 +246,14 @@ In this exercise we will explore the process of integrating our applications wit
         }
         ```
 
-4. Run the following command to create an instance of Service Discovery **note: service name and type may be different depending on platform/operator configuration.  Please remember to create your service instance with your initials**
+5. Run the following command to create an instance of Service Discovery **note: service name and type may be different depending on platform/operator configuration.  Please remember to create your service instance with your initials**
 
     ```powershell
     cf create-service p-identity auth-internal sso-{Initials}
     ```
 
-5. Navigate to the manifest.yml file and in the services section add an entry to bind the application to the newly created instance of the SSO service
+6. Navigate to the manifest.yml file and in the services section add an entry to bind the application to the newly created instance of the SSO service
 
     ```yml
-     - sso-mk
+     - sso-{initials}
     ```
