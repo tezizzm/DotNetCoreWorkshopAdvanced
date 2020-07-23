@@ -127,7 +127,13 @@ In this exercise we explore how Configuration Server pulls configuration from a 
     }
     ```
 
-6. In the application root create a file and name it `config.json` and edit it in the following way.  The settings in this file will tell our instance of Spring Cloud Config that we will be connecting to a git repository at the location specified in the uri field.
+6. We will once again publish  our application using the Dotnet Core CLI.
+
+    ```powershell
+    dotnet publish -o .\publish
+    ```
+
+7. In the application root create a file and name it `config.json` and edit it in the following way.  The settings in this file will tell our instance of Spring Cloud Config that we will be connecting to a git repository at the location specified in the uri field.
 
     ```json
     {
@@ -137,13 +143,21 @@ In this exercise we explore how Configuration Server pulls configuration from a 
     }
     ```
 
-7. Run the following command to create an instance of Spring Cloud Config Server with settings from config.json **note: service instance name and plan may be different depending on platform/operator configuration**
+8. Run the following command to create an instance of Spring Cloud Config Server with settings from config.json **note: service instance name and plan may be different depending on platform/operator configuration**
+
+    Spring Cloud Configuration Server 2.x
 
     ```bat
-    cf create-service p-config-server standard myConfigServer-mk -c .\config.json
+    cf create-service p-config-server standard myConfigServer-{initials} -c .\config.json
     ```
 
-8. You are ready to now “push” your application.  Edit the manifest.yml file to add a services section (under the env section) that will automatically bind our application to the config server instance we just created.
+    Spring Cloud Configuration Server 3.x
+
+    ```bat
+    cf create-service p.config-server standard myConfigServer-{initials} -c .\config.json
+    ```
+
+9. Once your service has been successfully created you are ready to now “push” your application.  To check the status of your service run the command `cf services` find your service by name and ensure it's Last Operation status is listed as Create Succeeded.  Edit the manifest.yml file to add a services section (under the env section) that will automatically bind our application to the config server instance we just created.
 
     ```yml
     ...
@@ -151,9 +165,9 @@ In this exercise we explore how Configuration Server pulls configuration from a 
      env:
        ASPNETCORE_ENVIRONMENT: development
      services:
-     - myConfigServer-mk
+     - myConfigServer-{initials}
     ```
 
-9. Run the cf push command to build, stage and run your application on PCF.  Ensure you are in the same directory as your manifest file and type `cf push`.
+10. Run the cf push command to build, stage and run your application on PCF.  Ensure you are in the same directory as your manifest file and type `cf push`.
 
-10. Once the `cf push` command has completed navigate to the given url and you should see the Swagger page.  To confirm the configuration have a look at the configured git repository in the config.json file.
+11. Once the `cf push` command has completed navigate to the given url and you should see the Swagger page.  To confirm the configuration have a look at the configured git repository in the config.json file.

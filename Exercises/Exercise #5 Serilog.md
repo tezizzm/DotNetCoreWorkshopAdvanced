@@ -130,6 +130,12 @@ Before we switch to Apps Manager and see all the wonderful benefits of actuators
     services.AddSingleton<IInfoContributor, ProductInStockInfoContributor>();
     ```
 
-5. Run the cf push command to build, stage and run your application on PCF.  Ensure you are in the same directory as your manifest file and type `cf push`.
+5. We will once again publish  our application using the Dotnet Core CLI.
 
-6. Once the command has completed, navigate to the url to see the Swagger definition of our API and then explore some of the Apps Manager integrations with Steeltoe.  Pay special attention to the application logs and the Information section under Settings.
+    ```powershell
+    dotnet publish -o .\publish
+    ```
+
+6. Run the cf push command to build, stage and run your application on PCF.  Ensure you are in the same directory as your manifest file and type `cf push`.
+
+7. Once the command has completed, navigate to the url to see the Swagger definition of our API and then explore some of the Apps Manager integrations with Steeltoe.  Pay special attention to the application logs and the Information section under Settings.

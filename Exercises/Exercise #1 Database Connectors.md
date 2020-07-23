@@ -267,7 +267,13 @@ In this exercise we create a Web API application that will serve as the backend 
     }
     ```
 
-16. You are ready to now “push” your application.  Create a file at the root of your application name it manifest.yml and edit it to match the snippet below.  The settings in this file instruct the cloud foundry cli how to stage and deploy your application.  **Note due to formatting issues simply copying the below manifest file MAY produce errors due to the nature of yaml formatting.  Use the CloudFoundry extension recommend in exercise 0 to assist in the correct formatting.  Once again take note of and replace the *{Initials}* placeholder in the command.**
+16. We will now utilize the [Dotnet Core CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/) to [publish](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-publish) our application.  Note we set the output directory with the `-o` flag and will then use the path to `cf push` our application in the next step.
+
+    ```powershell
+    dotnet publish -o .\publish
+    ```
+
+17. You are ready to now “push” your application.  Create a file at the root of your application name it manifest.yml and edit it to match the snippet below.  The settings in this file instruct the cloud foundry cli how to stage and deploy your application.  **Note due to formatting issues simply copying the below manifest file MAY produce errors due to the nature of yaml formatting.  Use the CloudFoundry extension recommend in exercise 0 to assist in the correct formatting.  Once again take note of and replace the *{Initials}* placeholder in the command.**
 
     ```yml
     applications:
@@ -277,10 +283,11 @@ In this exercise we create a Web API application that will serve as the backend 
       - https://github.com/cloudfoundry/dotnet-core-buildpack#v2.3.11
       instances: 1
       memory: 256M
+      path: .\publish
       env:
         ASPNETCORE_ENVIRONMENT: development
     ```
 
-17. Run the cf push command to build, stage and run your application on PCF.  Ensure you are in the same directory as your manifest file and type `cf push`.
+18. Run the cf push command to build, stage and run your application on PCF.  Ensure you are in the same directory as your manifest file and type `cf push`.
 
-18. Once the `cf push` command has completed navigate to the given application url at which point you will see a 401 Not Found Status. This is expected since we haven't configured a default route and will be updated in the next lab.  If you navigate to the `api/products` path you should see a json array of products that are pulled from the backend store.
+19. Once the `cf push` command has completed navigate to the given application url at which point you will see a 401 Not Found Status. This is expected since we haven't configured a default route and will be updated in the next lab.  If you navigate to the `api/products` path you should see a json array of products that are pulled from the backend store.

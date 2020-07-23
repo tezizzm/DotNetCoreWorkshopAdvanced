@@ -366,7 +366,13 @@ We now change focus to a front end application that discovers our products API m
     }
     ```
 
-10. You are ready to now “push” your application.  Create a file at the root of your application name it manifest.yml and edit it as follows, be sure to once again take note of the ***{initials}*** placeholder:  **Note due to formatting issues simply copying the below manifest file may produce errors due to the nature of yaml formatting.  Use the CloudFoundry extension recommend in exercise 1 to assist in the correct formatting**
+10. We will once again publish  our application using the Dotnet Core CLI.
+
+    ```powershell
+    dotnet publish -o .\publish
+    ```
+
+11. You are ready to now “push” your application.  Create a file at the root of your application name it manifest.yml and edit it as follows, be sure to once again take note of the ***{initials}*** placeholder:  **Note due to formatting issues simply copying the below manifest file may produce errors due to the nature of yaml formatting.  Use the CloudFoundry extension recommend in exercise 1 to assist in the correct formatting**
 
     ```yml
     applications:
@@ -378,9 +384,9 @@ We now change focus to a front end application that discovers our products API m
       env:
        ASPNETCORE_ENVIRONMENT: development
       services:
-      - myDiscoveryService
+      - myDiscoveryService-{initials}
     ```
 
-11. Run the cf push command to build, stage and run your application on PCF.  Ensure you are in the same directory as your manifest file and type `cf push`.
+12. Run the cf push command to build, stage and run your application on PCF.  Ensure you are in the same directory as your manifest file and type `cf push`.
 
-12. Once the command has completed, navigate to the url to see the home page with products listed.
+13. Once the command has completed, navigate to the url to see the home page with products listed.

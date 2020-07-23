@@ -136,6 +136,12 @@ In this exercise we'll add our OpenCensus integration to our bootcamp-store fron
     }
     ```
 
-4. Run the cf push command to build, stage and run your application on PCF.  Ensure you are in the same directory as your manifest file and type `cf push`.
+4. We will once again publish  our application using the Dotnet Core CLI.
 
-5. Once the command has completed, navigate to the url to once again see the home page with products listed.  From there go to the Zipkin server and observe traces as you navigate and exercise your web store application.
+    ```powershell
+    dotnet publish -o .\publish
+    ```
+
+5. Run the cf push command to build, stage and run your application on PCF.  Ensure you are in the same directory as your manifest file and type `cf push`.
+
+6. Once the command has completed, navigate to the url to once again see the home page with products listed.  From there go to the Zipkin server and observe traces as you navigate and exercise your web store application.

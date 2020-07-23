@@ -246,13 +246,19 @@ In this exercise we will explore the process of integrating our applications wit
         }
         ```
 
-5. Run the following command to create an instance of Service Discovery **note: service name and type may be different depending on platform/operator configuration.  Please remember to create your service instance with your initials**
+5. We will once again publish  our application using the Dotnet Core CLI.
+
+    ```powershell
+    dotnet publish -o .\publish
+    ```
+
+6. Run the following command to create an instance of Service Discovery **note: service name and type may be different depending on platform/operator configuration.  Please remember to create your service instance with your initials**
 
     ```powershell
     cf create-service p-identity auth-internal sso-{Initials}
     ```
 
-6. Navigate to the manifest.yml file and in the services section add an entry to bind the application to the newly created instance of the SSO service
+7. Navigate to the manifest.yml file and in the services section add an entry to bind the application to the newly created instance of the SSO service
 
     ```yml
      - sso-{initials}

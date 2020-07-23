@@ -123,6 +123,12 @@ Before we switch to Apps Manager and see all the wonderful benefits of actuators
     }
     ```
 
-5. Run the cf push command to build, stage and run your application on PCF.  Ensure you are in the same directory as your manifest file and type `cf push`.
+5. We will once again publish our application using the Dotnet Core CLI.
 
-6. Once the command has completed, navigate to the url to once again see the home page with products listed and then explore some of the Apps Manager integrations with Steeltoe.
+    ```powershell
+    dotnet publish -o .\publish
+    ```
+
+6. Run the cf push command to build, stage and run your application on PCF.  Ensure you are in the same directory as your manifest file and type `cf push`.
+
+7. Once the command has completed, navigate to the url to once again see the home page with products listed and then explore some of the Apps Manager integrations with Steeltoe.
