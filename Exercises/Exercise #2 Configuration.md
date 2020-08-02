@@ -102,7 +102,7 @@ In this exercise we explore how Configuration Server pulls configuration from a 
         app.UseSwaggerUi3(settings => settings.Path = "");
         ```
 
-5. In the root directory navigate to the appsettings.json file and add an entry for spring and spring cloud config like the below snippet.  These settings tell Eureka to register our service instance with the Eureka Server.  Where appropriate replace the `{initials}` placeholder with your initials.
+5. In the root directory navigate to the appsettings.json file and add an entry for spring and spring cloud config like the below snippet.  These values represent settings in Spring Cloud Config Server which indicate such things as the currently executing environment.  Where appropriate replace the `{initials}` placeholder with your initials.
 
     ```json
     {

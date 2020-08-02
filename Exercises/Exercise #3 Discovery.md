@@ -44,7 +44,13 @@ This exercise helps us understand how to register our microservices with the Spr
     }
     ```
 
-4. Run the following command to create an instance of Service Discovery **note: service name and type may be different depending on platform/operator configuration**
+4. We will once again publish  our application using the Dotnet Core CLI.
+
+    ```powershell
+    dotnet publish -o .\publish
+    ```
+
+5. Run the following command to create an instance of Service Discovery **note: service name and type may be different depending on platform/operator configuration**
 
     Spring Cloud Configuration Server 2.x
 
@@ -58,15 +64,15 @@ This exercise helps us understand how to register our microservices with the Spr
     cf create-service p.service-registry standard myDiscoveryService-{initials}
     ```
 
-5. Navigate to the manifest.yml file and in the services section add an entry to bind the application to the newly created instance of the Service Discovery Service.
+6. Navigate to the manifest.yml file and in the services section add an entry to bind the application to the newly created instance of the Service Discovery Service.
 
     ```yml
         - myDiscoveryService-{initials}
     ```
 
-6. We will now once again push the API application.  Run the `cf push` command to update the api.
+7. We will now once again push the API application.  Run the `cf push` command to update the api.
 
-7. Go "manage" the `Service Registry` instance from within Apps Manager. Notice our service is now listed!
+8. Go "manage" the `Service Registry` instance from within Apps Manager. Notice our service is now listed!
 
 We now change focus to a front end application that discovers our products API microservice.
 
@@ -389,6 +395,7 @@ We now change focus to a front end application that discovers our products API m
       - https://github.com/cloudfoundry/dotnet-core-buildpack#v2.3.11
       random-route: true
       memory: 256M
+      path: .\publish
       env:
        ASPNETCORE_ENVIRONMENT: development
       services:
