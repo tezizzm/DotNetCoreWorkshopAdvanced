@@ -33,9 +33,11 @@ namespace bootcamp_store
             {
                 Console.WriteLine(e);
                 result.Status = HealthStatus.DOWN;
+                result.Details.Add("status", "DOWN");
             }
 
             result.Details.Add("endpoint", "itunes.apple.com/search");
+            result.Details.Add("status", "UP");
             return result;
         }
 
